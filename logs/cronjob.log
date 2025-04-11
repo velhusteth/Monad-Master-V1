@@ -10797,3 +10797,82 @@ Block: 11761552n
 Số lượng: 0.41 MON
 TELEGRAM_LOG::✅ Đã thực hiện: Stake aprMon SL: 0.41
 
+
+[2025-04-11T22:08:00.684Z] ▶️ Đang chạy: npm run start
+📤 Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+🎯 Đang chạy hàm: redeem_aprMON(0.13)
+Calling redeem method with 0.41 token shares...
+Transaction successful!
+Transaction hash: 0x4a0b189027331acd923f4a4cd6163b9324b298baf41b083167ef91319025431a
+Block number: 11761653n
+Shares redeemed: 0.41
+TELEGRAM_LOG::✅ Đã thực hiện: Redeem aprMon SL: 0.13
+
+
+[2025-04-11T22:09:00.144Z] ▶️ Đang chạy: npm run start
+❌ Error: Command failed: npm run start
+Error calling contract method: Error happened while trying to execute a function inside a smart contract
+❌ Lỗi khi chạy hàm: Error happened while trying to execute a function inside a smart contract
+
+📤 Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+🎯 Đang chạy hàm: redeem_aprMON(0.26)
+
+📛 Stderr:
+Error calling contract method: Error happened while trying to execute a function inside a smart contract
+❌ Lỗi khi chạy hàm: Error happened while trying to execute a function inside a smart contract
+
+
+[2025-04-11T22:10:00.703Z] ▶️ Đang chạy: npm run start
+❌ Error: Command failed: npm run start
+Error calling contract method: Error happened while trying to execute a function inside a smart contract
+❌ Lỗi khi chạy hàm: Error happened while trying to execute a function inside a smart contract
+
+📤 Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+🎯 Đang chạy hàm: redeem_aprMON(0.28)
+
+📛 Stderr:
+Error calling contract method: Error happened while trying to execute a function inside a smart contract
+❌ Lỗi khi chạy hàm: Error happened while trying to execute a function inside a smart contract
+
+
+[2025-04-11T22:11:00.231Z] ▶️ Đang chạy: npm run start
+📤 Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+🎯 Đang chạy hàm: deposit(0.2)
+Calling deposit method with 0.01 MON...
+Transaction successful!
+Transaction hash: 0x3c31519d8dec2c80ebab5ba7b4072c9664dba680353321e8e389a20eac2586e1
+Block number: 11761983n
+MON sent: 0.01
+TELEGRAM_LOG::✅ Đã thực hiện: Nạp MON SL: 0.2
+
+
+[2025-04-11T22:12:00.734Z] ▶️ Đang chạy: npm run start
+📤 Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+🎯 Đang chạy hàm: redeem_shMON(0.12)
+Calling redeem method with 0.829354764728255768 token shares...
+Transaction successful!
+Transaction hash: 0x59dd6dc656be5dc6ffa81bedf7acc613913862171f2990738354c7eaa837f48a
+Block number: 11762099n
+Shares redeemed: 0.829354764728255768
+TELEGRAM_LOG::✅ Đã thực hiện: Redeem shMon SL: 0.12
+
