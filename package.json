@@ -1,6 +1,7 @@
 {
   "name": "monad-script",
   "version": "1.0.0",
+  "description": "Auto interaction script for Monad smart contracts",
   "main": "index.js",
   "scripts": {
     "start": "npx ts-node src/main.ts",
@@ -10,10 +11,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+ 
   "dependencies": {
     "@types/bn.js": "^5.1.6",
     "@types/web3": "^1.2.2",
+    "axios": "^1.8.4",
     "bn.js": "^5.2.1",
     "dotenv": "^16.4.7",
     "node-cron": "^3.0.3",

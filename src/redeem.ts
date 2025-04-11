@@ -34,6 +34,7 @@ export async function redeem_shMON() {
     web3.eth.accounts.wallet.add(account);
 
     const contract = new web3.eth.Contract(abi, config.contractAddress);
+
     const receiver = account.address;
     const owner = account.address; // Set _owner to the caller
 
