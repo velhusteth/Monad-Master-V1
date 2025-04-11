@@ -1,0 +1,160 @@
+
+[2025-04-11T12:01:00.069Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: redeem_shMON
+Calling redeem method with 2.997633600287871561 token shares...
+Transaction successful!
+Transaction hash: 0x66cdfea70d273109594e2ce6010a445d202a1e6fcbf0a63a82ceb0a8a3dee85c
+Block number: 11697936n
+Shares redeemed: 2.997633600287871561
+Updated CSV: 2,1,0,1,0,0
+Function executed successfully
+
+
+[2025-04-11T12:02:00.509Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: deposit
+Calling deposit method with 0.1 MON...
+Transaction successful!
+Transaction hash: 0xd3d2e88dcf26a505b92bc9dc522f0d8e1c3e45387e4d18b210debb283ecbb6a1
+Block number: 11698043n
+MON sent: 0.1
+Updated CSV: 3,1,0,1,0,0
+Function executed successfully
+
+
+[2025-04-11T12:03:00.015Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: redeem_shMON
+Calling redeem method with 0 token shares...
+Transaction successful!
+Transaction hash: 0x78353cb055644c0c9825ac0f30a89dc87312e6980b2acf5f8591be098d05bd77
+Block number: 11698149n
+Shares redeemed: 0
+Updated CSV: 3,1,0,2,0,0
+Function executed successfully
+
+
+[2025-04-11T12:04:00.522Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: redeem_shMON
+Calling redeem method with 0 token shares...
+Transaction successful!
+Transaction hash: 0x62732131d9e1091698658d5a666e81f14cda71a4e98f0b267e07c3df2429b29c
+Block number: 11698269n
+Shares redeemed: 0
+Updated CSV: 3,1,0,3,0,0
+Function executed successfully
+
+
+[2025-04-11T12:05:00.051Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: stake_shMON
+Calling deposit method with 0.1 MON...
+Transaction successful!
+Transaction hash: 0xf90e73f641aeb23d090ccb5ef0bb42d0d0bfb188d425f46220ef690bf37b168c
+Block number: 11698366n
+MON sent: 0.1
+Updated CSV: 3,1,1,3,0,0
+Function executed successfully
+
+
+[2025-04-11T12:06:00.544Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: stake_aprMON
+Calling deposit method with 0.1 MON...
+Transaction successful!
+Transaction hash: 0xf3245cc68cfcbef83cc7fe8ad6c6e62cdf8f46661a657a0f6d7b0e85f75e6464
+Block number: 11698463n
+MON sent: 0.1
+Updated CSV: 3,1,1,3,1,0
+Function executed successfully
+
+
+[2025-04-11T12:07:00.013Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: stake_aprMON
+Calling deposit method with 0.1 MON...
+Transaction successful!
+Transaction hash: 0x111ea68760a7ffc0b06f8dbc419cc2da4f35afc34cf2a6e7998b3479ad609558
+Block number: 11698559n
+MON sent: 0.1
+Updated CSV: 3,1,1,3,2,0
+Function executed successfully
+
+
+[2025-04-11T12:08:00.581Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: redeem_aprMON
+Calling redeem method with 0.3 token shares...
+Transaction successful!
+Transaction hash: 0x44774b23d18ac0113a909b5c1076d172e66475a00f5a1af27adcffdb4e5263c6
+Block number: 11698662n
+Shares redeemed: 0.3
+Updated CSV: 3,1,1,3,2,1
+Function executed successfully
+
+
+[2025-04-11T12:09:00.044Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: deposit
+Calling deposit method with 0.1 MON...
+Transaction successful!
+Transaction hash: 0xac88e80e59377eb579f5b0b33b44d715faf3f0a0f92ae7c4fa04cdd452c10abd
+Block number: 11698774n
+MON sent: 0.1
+Updated CSV: 4,1,1,3,2,1
+Function executed successfully
+
+
+[2025-04-11T12:10:00.562Z] Running: npm run start
+Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+Selected function: deposit
+Calling deposit method with 0.1 MON...
+Transaction successful!
+Transaction hash: 0x3a0d1589d6c742d3ace4263abd87833484d201ead2148eca8591b9d0f3761664
+Block number: 11698869n
+MON sent: 0.1
+Updated CSV: 5,1,1,3,2,1
+Function executed successfully
+

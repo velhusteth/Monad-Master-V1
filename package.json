@@ -1,0 +1,27 @@
+{
+  "name": "monad-script",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx ts-node src/main.ts",
+    "cron": "node cron-runner.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/bn.js": "^5.1.6",
+    "@types/web3": "^1.2.2",
+    "bn.js": "^5.2.1",
+    "dotenv": "^16.4.7",
+    "node-cron": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "web3": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0"
+  }
+}
