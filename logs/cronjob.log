@@ -10876,3 +10876,60 @@ Block number: 11762099n
 Shares redeemed: 0.829354764728255768
 TELEGRAM_LOG::✅ Đã thực hiện: Redeem shMon SL: 0.12
 
+
+[2025-04-11T22:13:00.248Z] ▶️ Đang chạy: npm run start
+📤 Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+🎯 Đang chạy hàm: stake_aprMON(0.28)
+📨 Ví: 0xCA2f0C5aEf4Df89a90DCb52561B5c7BbFF01A817
+🏦 Contract: 0xb2f82D0f38dc453D596Ad40A37799446Cc89274A
+💰 Stake: 0.28 MON
+🧾 Value (wei): 280000000000000000
+🎯 Receiver: 0xCA2f0C5aEf4Df89a90DCb52561B5c7BbFF01A817
+✅ Stake thành công!
+Tx hash: 0x5bb5f24c568410121bbbf6cffd51efdeeb471fc43f868e77b2fa689fb02bb978
+Block: 11762201n
+Số lượng: 0.28 MON
+TELEGRAM_LOG::✅ Đã thực hiện: Stake aprMon SL: 0.28
+
+
+[2025-04-11T22:14:00.727Z] ▶️ Đang chạy: npm run start
+📤 Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+🎯 Đang chạy hàm: stake_shMON(0.12)
+📨 Ví: 0xCA2f0C5aEf4Df89a90DCb52561B5c7BbFF01A817
+🏦 Contract: 0x3a98250F98Dd388C211206983453837C8365BDc1
+💰 Stake: 0.12 MON
+🧾 Value (wei): 120000000000000000
+🎯 Receiver: 0xCA2f0C5aEf4Df89a90DCb52561B5c7BbFF01A817
+✅ Stake thành công!
+Tx hash: 0xa4c76fef13b6ab4607c4fce8e3038634d444b17050db5b6ac4cf931aafc7d4d6
+Block: 11762304n
+Số lượng: 0.12 MON
+TELEGRAM_LOG::✅ Đã thực hiện: Stake shMon SL: 0.12
+
+
+[2025-04-11T22:15:00.194Z] ▶️ Đang chạy: npm run start
+📤 Output:
+
+> monad-script@1.0.0 start
+> npx ts-node src/main.ts
+
+🎯 Đang chạy hàm: stake_aprMON(0.34)
+📨 Ví: 0xCA2f0C5aEf4Df89a90DCb52561B5c7BbFF01A817
+🏦 Contract: 0xb2f82D0f38dc453D596Ad40A37799446Cc89274A
+💰 Stake: 0.34 MON
+🧾 Value (wei): 340000000000000000
+🎯 Receiver: 0xCA2f0C5aEf4Df89a90DCb52561B5c7BbFF01A817
+✅ Stake thành công!
+Tx hash: 0xcae9534449df21a5c4755186db3b72a6dec293a964424776ea8fa7efa9593476
+Block: 11762398n
+Số lượng: 0.34 MON
+TELEGRAM_LOG::✅ Đã thực hiện: Stake aprMon SL: 0.34
+
