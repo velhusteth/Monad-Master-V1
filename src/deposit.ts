@@ -5,8 +5,6 @@ import * as path from "path";
 
 config();
 
-const AMOUNT = `${process.env.SWAP_AMOUNT || 0.01}`;
-
 // Configuration interface
 interface Config {
   rpcUrl: string;
@@ -15,9 +13,8 @@ interface Config {
   abiPath: string;
 }
 
-export async function deposit() {
+export async function deposit(amount: number) {
   try {
-    // Set up configuration
     const config: Config = {
       rpcUrl: "https://testnet-rpc.monad.xyz",
       privateKey: process.env.PRIVATE_KEY as string,
@@ -25,26 +22,21 @@ export async function deposit() {
       abiPath: "./abi/WrappedMonad.json",
     };
 
-    // Load ABI from JSON file
     const abiPath = path.resolve(__dirname, config.abiPath);
     if (!fs.existsSync(abiPath)) {
       throw new Error(`ABI file not found at ${abiPath}`);
     }
 
     const contractABI = JSON.parse(fs.readFileSync(abiPath, "utf8"));
-
-    // Initialize Web3
     const web3 = new Web3(config.rpcUrl);
 
-    // Add private key to wallet
     const account = web3.eth.accounts.privateKeyToAccount(config.privateKey);
     web3.eth.accounts.wallet.add(account);
 
-    // Create contract instance
     const contract = new web3.eth.Contract(contractABI, config.contractAddress);
 
-    const value = web3.utils.toWei(AMOUNT, "ether");
-    // Prepare transaction
+    const value = web3.utils.toWei(amount.toString(), "ether");
+
     const tx = {
       from: account.address,
       to: config.contractAddress,
@@ -54,28 +46,24 @@ export async function deposit() {
       gasPrice: await web3.eth.getGasPrice(),
     };
 
-    // Estimate gas (optional but recommended for payable functions)
     const gasEstimate = await contract.methods.deposit().estimateGas({
       from: account.address,
       value: value,
     });
     tx.gas = gasEstimate.toString();
 
-    console.log(
-      `Calling deposit method with ${web3.utils.fromWei(value, "ether")} MON...`
-    );
+    console.log(`👉 Gọi deposit với: ${web3.utils.fromWei(value, "ether")} MON...`);
 
-    // Sign and send transaction
     const receipt = await web3.eth.sendTransaction(tx);
 
-    console.log("Transaction successful!");
+    console.log("✅ Giao dịch thành công!");
     console.log("Transaction hash:", receipt.transactionHash);
     console.log("Block number:", receipt.blockNumber);
-    console.log("MON sent:", web3.utils.fromWei(value, "ether"));
+    console.log("MON đã nạp:", web3.utils.fromWei(value, "ether"));
 
     return receipt;
   } catch (error) {
-    console.error("Error calling contract method:", error);
+    console.error("❌ Lỗi khi gọi deposit:", error);
     throw error;
   }
 }

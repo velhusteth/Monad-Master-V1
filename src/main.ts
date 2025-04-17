@@ -6,29 +6,24 @@ import { getRandomFloat } from "./utils/random";
 import * as fs from "fs/promises";
 import * as path from "path";
 
-// ✅ Bản đồ tên hàm sang nhãn tiếng Việt để log
 const labelMap: Record<string, string> = {
   deposit: "Nạp MON",
   withdraw: "Rút MON",
-  stake_aprMON: "Stake aprMon",
-  stake_shMON: "Stake shMon",
-  redeem_aprMON: "Redeem aprMon",
-  redeem_shMON: "Redeem shMon",
+  stake_aprMON: "Stake aprMON",
+  stake_shMON: "Stake shMON",
+  redeem_aprMON: "Redeem aprMON",
+  redeem_shMON: "Redeem shMON"
 };
 
-// ✅ Danh sách các hàm
-const functions = [
-  deposit,
-  withdraw,
-  stake_shMON,
-  redeem_shMON,
-  stake_aprMON,
-  redeem_aprMON,
+const functionNames = [
+  "deposit",
+  "withdraw",
+  "stake_shMON",
+  "redeem_shMON",
+  "stake_aprMON",
+  "redeem_aprMON"
 ];
 
-const functionNames = functions.map((f) => f.name);
-
-// ✅ File CSV lưu số lần chạy
 const csvFilePath = path.join(__dirname, "../function_calls.csv");
 
 async function loadCounters(): Promise<Record<string, number>> {
@@ -60,34 +55,68 @@ async function saveCounters(counters: Record<string, number>) {
   await fs.writeFile(csvFilePath, csvContent);
 }
 
-// ✅ Hàm chính
 async function run() {
   const counters = await loadCounters();
 
-  // 👉 Random hàm và chuẩn bị thông tin
-  const randomIndex = Math.floor(Math.random() * functions.length);
-  const fn = functions[randomIndex];
+  const randomIndex = Math.floor(Math.random() * functionNames.length);
   const selectedFunctionName = functionNames[randomIndex];
   const label = labelMap[selectedFunctionName] || selectedFunctionName;
-
   const amount = getRandomFloat(0.1, 0.5, 2);
-  console.log(`🎯 Đang chạy hàm: ${selectedFunctionName}(${amount})`);
+
+  console.log(
+    `🎯 Đang chạy hàm: ${selectedFunctionName}${
+      selectedFunctionName !== "withdraw" &&
+      !selectedFunctionName.startsWith("redeem_")
+        ? `(${amount})`
+        : ""
+    }`
+  );
 
   try {
-    // ✅ Gọi hàm tương ứng có truyền amount
-    const result = await fn(amount);
+    let result: any;
+    let actionAmount: string | number = amount;
+
+    switch (selectedFunctionName) {
+      case "withdraw":
+        result = await withdraw();
+        actionAmount = "toàn bộ";
+        break;
+
+      case "redeem_aprMON":
+        result = await redeem_aprMON();
+        actionAmount = result?.sharesInEther || "0";
+        break;
+
+      case "redeem_shMON":
+        result = await redeem_shMON();
+        actionAmount = result?.sharesInEther || "0";
+        break;
+
+      case "stake_aprMON":
+        result = await stake_aprMON(amount);
+        break;
+
+      case "stake_shMON":
+        result = await stake_shMON(amount);
+        break;
+
+      case "deposit":
+        result = await deposit(amount);
+        break;
+
+      default:
+        console.log(`⚠️ Hàm không hợp lệ: ${selectedFunctionName}`);
+        return;
+    }
 
     counters[selectedFunctionName] += 1;
     await saveCounters(counters);
 
     if (result) {
-      // ✅ Gửi log dạng Telegram đọc được
-      console.log(`TELEGRAM_LOG::✅ Đã thực hiện: ${label} SL: ${amount}`);
-
-      // Đảm bảo stdout được flush trước khi exit
+      console.log(`TELEGRAM_LOG::✅ Đã thực hiện: ${label} SL: ${actionAmount}`);
       process.stdout.write("", async () => {
         await new Promise((res) => setTimeout(res, 100));
-        process.exit(0); // thành công → cron sẽ chờ 1 phút rồi gọi lại
+        process.exit(0);
       });
     } else {
       console.log(`⚠️ ${label} bị skip hoặc không đủ điều kiện.`);
@@ -96,9 +125,8 @@ async function run() {
   } catch (error: any) {
     counters[selectedFunctionName] += 1;
     await saveCounters(counters);
-
     console.error("❌ Lỗi khi chạy hàm:", error.message || error);
-    process.exit(1); // lỗi → cron chạy tiếp không delay
+    process.exit(1);
   }
 }
 

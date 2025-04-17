@@ -5,8 +5,6 @@ import * as path from "path";
 
 config();
 
-const AMOUNT = "0.01";
-
 // Configuration interface
 interface Config {
   rpcUrl: string;
@@ -33,54 +31,49 @@ export async function withdraw() {
 
     const contractABI = JSON.parse(fs.readFileSync(abiPath, "utf8"));
 
-    // Initialize Web3
     const web3 = new Web3(config.rpcUrl);
-
-    // Add private key to wallet
     const account = web3.eth.accounts.privateKeyToAccount(config.privateKey);
     web3.eth.accounts.wallet.add(account);
 
-    // Create contract instance
     const contract = new web3.eth.Contract(contractABI, config.contractAddress);
 
-    const tokenBalance = await contract.methods
-      .balanceOf(account.address)
-      .call();
-    const value = tokenBalance as unknown as bigint;
+    // Lấy balance và ép kiểu string (phòng lỗi void)
+    const rawBalance = await contract.methods.balanceOf(account.address).call() as string;
 
-    // Prepare transaction
+    // Nếu balance = 0 thì return
+    if (rawBalance === "0") {
+      console.log("⚠️ Không có MON để rút.");
+      return false;
+    }
+
+    const value = rawBalance;
+
     const tx = {
       from: account.address,
       to: config.contractAddress,
       data: contract.methods.withdraw(value).encodeABI(),
-      gas: "100000", // Set a default gas limit
+      gas: "100000",
       gasPrice: await web3.eth.getGasPrice(),
     };
 
-    // Estimate gas (optional but recommended for payable functions)
+    // Ước lượng gas chính xác
     const gasEstimate = await contract.methods.withdraw(value).estimateGas({
       from: account.address,
     });
     tx.gas = gasEstimate.toString();
 
-    console.log(
-      `Calling withdraw method with ${web3.utils.fromWei(
-        value,
-        "ether"
-      )} MON...`
-    );
+    console.log(`👉 Gọi withdraw với toàn bộ: ${web3.utils.fromWei(value, "ether")} MON`);
 
-    // Sign and send transaction
     const receipt = await web3.eth.sendTransaction(tx);
 
-    console.log("Transaction successful!");
+    console.log("✅ Giao dịch thành công!");
     console.log("Transaction hash:", receipt.transactionHash);
     console.log("Block number:", receipt.blockNumber);
-    console.log("MON sent:", web3.utils.fromWei(value, "ether"));
+    console.log("MON đã rút:", web3.utils.fromWei(value, "ether"));
 
     return receipt;
   } catch (error) {
-    console.error("Error calling contract method:", error);
+    console.error("❌ Lỗi khi gọi withdraw:", error);
     throw error;
   }
 }
